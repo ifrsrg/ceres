@@ -1,0 +1,54 @@
+OCTAVE:
+
+Para abrir uma imagem no octave:
+
+I = imread('nomedaimagem.formato')
+imshow(I)
+
+size(I) - pega as dimensões da imagem
+Ele irá retornar 3 valores (Linhas colunas e camadas)
+
+siz
+size(I,3) - pega somente as camadas
+
+para criar um vetor
+
+nomedavariavel = [linha,colunas;linha2,coluna2]
+O resultado vai ser algo mais ou menos assim:
+   245   470
+   360   480
+
+Para fazer a média de um vetor/matriz
+mean(nomedavariavel)
+
+>> X(:,:,:,1) = image_1;
+>> X(:,:,:,2) = image_2;
+>> X(:,:,:,3) = image_3;
+>> Y=median(X,4);
+>> imshow(Y)
+
+Video com camera trap:
+youtube-dl https://www.youtube.com/watch?v=aYuZYZZ3b6w
+
+No octave:
+ #for i= 1:1500,j=i, imagem = imread(strcat('image',num2str(i),'.png')),X(:,:,:,j)=imagem,end
+ #Y=median(X,4)
+ #imshow(Y)
+ #imwrite(Y,'nome_da_imagem.formato')
+
+
+AGORA VAI:
+for i= 1:1500,j=i, imagem = imread(strcat('image',num2str(i),'.png')),X(:,:,:,j)=imagem,end
+
+PARA CRIAR UMA IMAGEM
+imwrite(Y,'nome_da_imagem.formato')
+
+Para saber a quantidade de arquivos imagem em uma pasta:
+imagefiles = dir('*.png');
+quantidade = length(imagefiles);
+tamanho = size(imread('image1.png'));
+resultado = zeros(tamanho);
+for i= 1:quantidade, imagem = imread(strcat('image',num2str(i),'.png')), imagem/=quantidade, resultado +=imagem, clear imagem, end;
+
+REFORMULADO:
+ for i= 1:quantidade, imagem = imread(strcat('image',num2str(i),'.png')), imagem/=i, resultado +=imagem, end;

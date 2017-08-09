@@ -1,0 +1,38 @@
+Para obter um video basta ir no terminal:
+
+	CASO NAO TENHA O YOUTUBE-DL INSTALADO
+  # sudo add-apt-repository ppa:nilarimogard/webupd8
+  # sudo apt-get update
+  # sudo apt-get install youtube-dl
+
+  YOUTUBE-DL INSTALADO:
+  # youtube-dl linkdovideo -o nome_que_voce_quer_pro_video
+
+
+  Para converter um video em outro formato basta usar o comando
+
+  CASO NAO TENHA O FFMPEG INSTALADO
+  	# sudo apt-get install ffmpeg
+
+  FFMPEG JA INSTALADO
+
+  # ffmpeg -i nomedovido.formato novonome.novoformato
+
+
+  Para converter videos em varias imagens:
+
+  # sudo apt-get update
+  # sudo apt-get install libav-tools
+
+
+  # avconv -i nomedovideo.formato -r 1 -s 1366x788 -f image2 image-%03d.png
+
+  O ffmpeg tambem converte videos em fotos:
+  # ffmpeg -i nomedovideo.formato image%d.png
+
+
+o wget baixa o video e o parametro -o delimita qual é o nome do arquivo:
+
+rm => comando que apaga arquivos/pastas pelo terminal
+
+rm nome do arquivo  ou rm ~/musicas/nomedoarquivo

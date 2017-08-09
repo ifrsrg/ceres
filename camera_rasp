@@ -1,0 +1,53 @@
+GERANDO ARQUIVOS DE FOTO E VÍDEO
+
+Para gerar uma foto a partir da câmera, digite o seguinte comando no LX terminal :
+
+$raspistill -o minha_foto.png
+
+Para gerar um arquivo de vídeo, utilize este comando, que por padrão grava por 5 segundos :
+
+$raspivid -o nome_do_video.h264
+
+Lembrando que o módulo câmera não tem as funcionalidades de áudio, por isso, será gravada apenas a imagem. Para determinar um tempo maior do que 5 segundos para gravação, utilize o mesmo comando, adicionando -t <tempo> no final. O tempo dever ser fornecido em milisegundos:
+
+$raspivid -o nome_do_video.h264 -t 10000
+
+Para reproduzir o vídeo que você acabou de gravar, utilize o omxplayer:
+
+$omxplayer nome_do_video.h264
+
+E para visualizar as fotos, utilize o Image Viewer do próprio Raspbian, ou utilize o fbi. Para instalar o fbi, digite:
+
+$sudo apt-get install fbi
+
+Utilize então o comando abaixo para visualizar o arquivo PNG que foi gravado:
+
+$sudo fbi -T 2 minha_foto.png
+
+Para uma lista completa dos comandos suportados pelo software da câmera raspberry pi, como por exemplo a opção para mudar o tamanho das fotos, adicionar efeitos ou alterar a resolução do vídeo, digite na linha de comando os comandos abaixo, sem nenhum atributo adicional :
+
+$raspistill
+
+$raspivid
+
+
+Para gravar videos por um programa em Python, primeiro digitar no terminal:
+* sudo apt-get install python-picamera python3-picamera
+
+Depois de já intalado, em um arquivo python digitar os comandos abaixo:
+	import time
+	import picamera
+	with picamera.PiCamera() as camera:
+	    camera.start_preview()
+	    camera.start_recording('/home/pi/Desktop/video.h264')
+	    time.sleep(30)
+	    camera.stop_recording()
+	    camera.stop_preview()
+
+
+Caso não funcione, substituir as 3 primeiras linhas por:
+	from picamera import PiCamera
+	from time import sleep
+	cam = PiCamera()
+
+** Lembrando que o tempo é medido em segundos, portanto para um video de 10 minutos, utilizar 600
